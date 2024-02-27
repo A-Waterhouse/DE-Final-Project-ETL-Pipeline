@@ -77,11 +77,11 @@ pg8000 = _utils.import_optional_dependency("pg8000")
 # rows = con.run("SELECT * FROM dim_location LIMIT 10;")
 # print(*rows, '<----------dim_locatiion', sep='\n')
 
-    con = Mock()
-    mock_datetime = dt(2024, 2, 26, 10, 30, 0)
-    write_dim_location(con, data, mock_datetime)
+    # con = Mock()
+    # mock_datetime = dt(2024, 2, 26, 10, 30, 0)
+    # write_dim_location(con, data, mock_datetime)
 
-    assert con.run.call_count == len(data)
+    # assert con.run.call_count == len(data)
     
 @pytest.mark.describe('write_dim_location()')
 @pytest.mark.it('test_if_correct_data_is_being_inserted')

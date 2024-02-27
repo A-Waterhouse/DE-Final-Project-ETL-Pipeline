@@ -15,9 +15,6 @@ pg8000 = _utils.import_optional_dependency("pg8000")
 
 
 
-@pytest.mark.describe("write_dim_currency()")
-@pytest.mark.it("correct_data_is_written_to_DB")
-def test_correct_data_is_written_to_DB():
 
 @pytest.mark.describe('write_dim_currency()')
 @pytest.mark.it('test_number_of_times_connection_to_DB_is_made')
