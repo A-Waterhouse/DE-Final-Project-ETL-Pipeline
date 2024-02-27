@@ -92,12 +92,12 @@ The minimum viable product populates the following:
 
 (when making the 'new_tote' and 'data_warehouse' secrets you must choose 'Credentials for other databases" option and then 'postgreSQL' as database type, type in credentials and leave all other options default)
 
-## actions that need doing on github.com
+## Actions that need doing on github.com
 1. make a new secret on "https://github.com/<'your github username'>/<'your project name'>/settings/secrets/actions" and name them
 AWS_ACCESS_KEY and AWS_SECRET, put the value from access key from point 2 above into AWS_ACCESS_KEY and put secret access key into
 AWS_SECRET
 
-## actions that need doing locally
+## Actions that need doing locally
 1. type name of tf state bucket created 'Actions that need doing in AWS (directly on the website)' in step '1' it into: 
 - read_ingested_bucket_name() in ingestion.py under bucket_name variable
 - read_processed_bucket_name() in parquet_to_json.py under bucket_name variable
