@@ -1,31 +1,36 @@
 from src.ingestion import ingestion, read_ingested_bucket_name
 from src.utils.put_object_into_s3_bucket \
     import put_object_into_s3_bucket as put_s3
-from src.utils.get_time_of_last_query import get_time_of_last_query as get_time
+
 from unittest.mock import patch
 import pytest
 import logging
 import boto3
 import json
 from moto import mock_aws
-from datetime import datetime
-from decimal import Decimal
+
 
 @pytest.fixture
 def s3_client():
     with mock_aws():
         s3 = boto3.client("s3", region_name="eu-west-2")
-        s3.create_bucket(Bucket="terraform-12345", CreateBucketConfiguration={'LocationConstraint': 'eu-west-2'})
+        s3.create_bucket(Bucket="terraform-12345",
+                         CreateBucketConfiguration={'LocationConstraint':
+                                                    'eu-west-2'})
         yield s3
+
 
 def test_read_ingested_bucket_name(s3_client):
     # Upload a test object
-    s3_client.put_object(Bucket="terraform-12345", Key="tf-state", Body=json.dumps({"outputs": {"ingested_bucket": {"value": "my-bucket"}}}))
-    
-    
+    s3_client.put_object(Bucket="terraform-12345", Key="tf-state",
+                         Body=json.dumps(
+                             {"outputs": {"ingested_bucket":
+                                          {"value": "my-bucket"}}}))
+
     result = read_ingested_bucket_name()
-    
+
     assert result == "my-bucket"
+
 
 @pytest.mark.describe("ingestion()")
 @pytest.mark.it("test that we are using PG8000 to connect to db")
@@ -57,8 +62,7 @@ def test_ingestion_write_only_JSON_with_data_in_it(
     con.run.return_value = list()
     con.close.return_value = "nothing"
     put_obj_into_s3_bucket.assert_not_called()
-    
-    
+
 
 @pytest.mark.describe("put_object_into_s3_bucket()")
 @pytest.mark.it("test function write into s3")
@@ -82,4 +86,3 @@ def test_func_write_into_s3():
 def test_RuntimeError_NoSuchBucket():
     with pytest.raises(RuntimeError, match="NoSuchBucket"):
         put_s3(None, "mybucket", "some_key")
-
