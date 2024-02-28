@@ -1,5 +1,4 @@
 from src.utils.get_dim_location import get_dim_location as get_location
-from decimal import Decimal
 import pytest
 import datetime
 from unittest.mock import Mock
@@ -14,8 +13,10 @@ def test_seletc_data_after_given_date():
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)],
                    [30, '0336 Ruthe Heights', None, 'Buckinghamshire',
-                    'Lake Myrlfurt', '94545-4284', 'Falkland Islands (Malvinas)',
-                    '1083 286132', datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
+                    'Lake Myrlfurt', '94545-4284',
+                    'Falkland Islands (Malvinas)',
+                    '1083 286132',
+                    datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)]])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(
@@ -32,9 +33,12 @@ def test_function_returns_dict():
                     'Bartellview', '42400-5199', 'Congo', '1684 702261',
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)],
-                   [30, '0336 Ruthe Heights', None, 'Buckinghamshire',
-                    'Lake Myrlfurt', '94545-4284', 'Falkland Islands (Malvinas)',
-                    '1083 286132', datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
+                   [30, '0336 Ruthe Heights',
+                    None, 'Buckinghamshire',
+                    'Lake Myrlfurt', '94545-4284',
+                    'Falkland Islands (Malvinas)',
+                    '1083 286132',
+                    datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)]])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(
@@ -51,9 +55,12 @@ def test_function_returns_dict_with_correct_key():
                     'Bartellview', '42400-5199', 'Congo', '1684 702261',
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)],
-                   [30, '0336 Ruthe Heights', None, 'Buckinghamshire',
-                    'Lake Myrlfurt', '94545-4284', 'Falkland Islands (Malvinas)',
-                    '1083 286132', datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
+                   [30, '0336 Ruthe Heights',
+                    None, 'Buckinghamshire',
+                    'Lake Myrlfurt', '94545-4284',
+                    'Falkland Islands (Malvinas)',
+                    '1083 286132',
+                    datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)]])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(
@@ -70,9 +77,12 @@ def test_ffunction_returns_data_on_correct_key():
                     'Bartellview', '42400-5199', 'Congo', '1684 702261',
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)],
-                   [30, '0336 Ruthe Heights', None, 'Buckinghamshire',
-                    'Lake Myrlfurt', '94545-4284', 'Falkland Islands (Malvinas)',
-                    '1083 286132', datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
+                   [30, '0336 Ruthe Heights',
+                    None, 'Buckinghamshire',
+                    'Lake Myrlfurt', '94545-4284',
+                    'Falkland Islands (Malvinas)',
+                    '1083 286132',
+                    datetime.datetime(2022, 11, 3, 14, 20, 49, 962000),
                     datetime.datetime(2022, 11, 3, 14, 20, 49, 962000)]])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(

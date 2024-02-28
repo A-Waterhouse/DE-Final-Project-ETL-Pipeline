@@ -1,5 +1,4 @@
 from src.utils.get_dim_staff import get_dim_staff as get_staff
-from decimal import Decimal
 import pytest
 import datetime
 from unittest.mock import Mock

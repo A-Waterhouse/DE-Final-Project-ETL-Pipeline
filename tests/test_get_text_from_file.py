@@ -1,6 +1,5 @@
 from src.utils.get_text_from_file import get_text_from_file as gtff
 import pytest
-from unittest.mock import Mock
 from moto import mock_aws
 import boto3
 import json

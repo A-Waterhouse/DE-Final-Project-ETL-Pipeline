@@ -15,4 +15,5 @@ def get_object_path(records):
     Extracts bucket and object references from Records field of event.
     """
 
-    return records[0]["s3"]["bucket"]["name"], records[0]["s3"]["object"]["key"]
+    return records[0]["s3"]["bucket"]["name"], \
+        records[0]["s3"]["object"]["key"]

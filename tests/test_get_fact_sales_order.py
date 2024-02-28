@@ -10,11 +10,13 @@ from unittest.mock import Mock
 def test_seletc_data_after_given_date():
     con = Mock()
     query = tuple([[6807, datetime.datetime(2024, 2, 15, 10, 44, 10, 192000),
-                   datetime.datetime(2024, 2, 15, 10, 44, 10, 192000), 130, 20, 20, 74284,
+                   datetime.datetime(2024, 2, 15, 10, 44, 10, 192000),
+                   130, 20, 20, 74284,
                    Decimal('3.60'), 3, '2024-02-18', '2024-02-19', 30],
                    [6808, datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
                     datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
-                    288, 12, 11, 74326, Decimal('3.88'), 1, '2024-02-19', '2024-02-17', 23]
+                    288, 12, 11, 74326, Decimal('3.88'),
+                    1, '2024-02-19', '2024-02-17', 23]
                    ])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(
@@ -28,11 +30,15 @@ def test_seletc_data_after_given_date():
 def test_function_returns_dict():
     con = Mock()
     query = tuple([[6807, datetime.datetime(2024, 2, 15, 10, 44, 10, 192000),
-                   datetime.datetime(2024, 2, 15, 10, 44, 10, 192000), 130, 20, 20, 74284,
-                   Decimal('3.60'), 3, '2024-02-18', '2024-02-19', 30],
-                   [6808, datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
+                   datetime.datetime(2024, 2, 15, 10, 44, 10, 192000),
+                   130, 20, 20, 74284,
+                   Decimal('3.60'), 3, '2024-02-18',
+                   '2024-02-19', 30],
+                   [6808,
                     datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
-                    288, 12, 11, 74326, Decimal('3.88'), 1, '2024-02-19', '2024-02-17', 23]
+                    datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
+                    288, 12, 11, 74326, Decimal('3.88'),
+                    1, '2024-02-19', '2024-02-17', 23]
                    ])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(
@@ -46,11 +52,13 @@ def test_function_returns_dict():
 def test_function_returns_dict_with_correct_key():
     con = Mock()
     query = tuple([[6807, datetime.datetime(2024, 2, 15, 10, 44, 10, 192000),
-                   datetime.datetime(2024, 2, 15, 10, 44, 10, 192000), 130, 20, 20, 74284,
+                   datetime.datetime(2024, 2, 15, 10, 44, 10, 192000),
+                   130, 20, 20, 74284,
                    Decimal('3.60'), 3, '2024-02-18', '2024-02-19', 30],
                    [6808, datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
                     datetime.datetime(2024, 2, 15, 11, 57, 10, 123000),
-                    288, 12, 11, 74326, Decimal('3.88'), 1, '2024-02-19', '2024-02-17', 23]
+                    288, 12, 11, 74326, Decimal('3.88'),
+                    1, '2024-02-19', '2024-02-17', 23]
                    ])
     con.run.return_value = query
     time_of_last_query = datetime.datetime.strptime(

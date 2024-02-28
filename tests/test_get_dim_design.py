@@ -1,5 +1,4 @@
 from src.utils.get_dim_design import get_dim_design as design
-from decimal import Decimal
 import pytest
 import datetime
 from unittest.mock import Mock

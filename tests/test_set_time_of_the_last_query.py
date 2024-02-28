@@ -1,10 +1,11 @@
-import boto3
 from moto import mock_aws
 import pytest
 import datetime
 
-from src.utils.set_time_of_the_last_query import set_time_of_the_last_query as set_time
-from src.utils.get_time_of_last_query import get_time_of_last_query as get_time
+from src.utils.set_time_of_the_last_query\
+    import set_time_of_the_last_query as set_time
+from src.utils.get_time_of_last_query\
+    import get_time_of_last_query as get_time
 
 
 @pytest.mark.describe("set_time_of_the_last_query as set_time()")

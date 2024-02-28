@@ -1,12 +1,11 @@
-from src.ingestion import ingestion
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 import pytest
 import logging
 from moto import mock_aws
 import boto3
 import json
 
-from src.json_to_parquet import json_to_parquet as jtp, InvalidFileTypeError
+from src.json_to_parquet import json_to_parquet as jtp
 
 
 @pytest.mark.describe("json_to_parquet()")
@@ -15,7 +14,8 @@ def test_function_logs_if_invalid_file_name(caplog):
     with caplog.at_level(logging.ERROR):
         event = {
             "Records": [
-                {"s3": {"bucket": {"name": "YO IM S3"}, "object": {"key": "YO IM KEY"}}}
+                {"s3": {"bucket": {"name": "YO IM S3"},
+                        "object": {"key": "YO IM KEY"}}}
             ]
         }
         context = "no context"
@@ -88,8 +88,9 @@ def test_function_loggs_parquet_in_processed_bucket(caplog):
 
     s3 = boto3.resource("s3", region_name="eu-west-2")
     s3.create_bucket(
-        Bucket="YO_IM_S3", CreateBucketConfiguration={"LocationConstraint": "eu-west-2"}
-    )
+        Bucket="YO_IM_S3",
+        CreateBucketConfiguration={
+            "LocationConstraint": "eu-west-2"})
     s3.create_bucket(
         Bucket="processed-zone",
         CreateBucketConfiguration={"LocationConstraint": "eu-west-2"},
@@ -126,8 +127,9 @@ def test_function_write_parquet_in_processed_bucket(caplog):
 
     s3 = boto3.resource("s3", region_name="eu-west-2")
     s3.create_bucket(
-        Bucket="YO_IM_S3", CreateBucketConfiguration={"LocationConstraint": "eu-west-2"}
-    )
+        Bucket="YO_IM_S3",
+        CreateBucketConfiguration={
+            "LocationConstraint": "eu-west-2"})
     s3.create_bucket(
         Bucket="processed-zone",
         CreateBucketConfiguration={"LocationConstraint": "eu-west-2"},

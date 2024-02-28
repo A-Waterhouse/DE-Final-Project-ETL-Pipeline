@@ -63,9 +63,11 @@ def get_fact_sales_order(con, time_of_last_query):
                 elif ii == 7:
                     data_point[k] = Decimal(round(v, 2))
                 elif ii == 9:
-                    data_point[k] = datetime.datetime.strptime(v, "%Y-%m-%d").date()
+                    data_point[k] = datetime.datetime.strptime(
+                        v, "%Y-%m-%d").date()
                 elif ii == 10:
-                    data_point[k] = datetime.datetime.strptime(v, "%Y-%m-%d").date()
+                    data_point[k] = datetime.datetime.strptime(
+                        v, "%Y-%m-%d").date()
                 else:
                     data_point[k] = v
             fact_sales_order["fact_sales_order"].append(data_point)

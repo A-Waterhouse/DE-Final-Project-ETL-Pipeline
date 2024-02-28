@@ -71,8 +71,14 @@ def parquet_to_json(event, context):
         write_dim_counterparty(
             con, json_obj["data"][3][0]["dim_counterparty"], last_update
         )
-        write_dim_currency(con, json_obj["data"][4][0]["dim_currency"], last_update)
-        write_dim_design(con, json_obj["data"][5][0]["dim_design"], last_update)
+        write_dim_currency(
+            con,
+            json_obj["data"][4][0]["dim_currency"],
+            last_update)
+        write_dim_design(
+            con,
+            json_obj["data"][5][0]["dim_design"],
+            last_update)
         write_dim_location(con, json_obj["data"][1][0]["dim_location"])
         write_fact_sales_order(
             con, json_obj["data"][0][0]["fact_sales_order"], last_update
@@ -102,7 +108,8 @@ def parquet_to_json(event, context):
 
 
 def get_object_path(records):
-    return records[0]["s3"]["bucket"]["name"], records[0]["s3"]["object"]["key"]
+    return records[0]["s3"]["bucket"]["name"], \
+            records[0]["s3"]["object"]["key"]
 
 
 def get_text_from_file(client, bucket, object_key):
@@ -165,9 +172,12 @@ def get_secret(secret_name="data_warehouse"):
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
-    client = session.client(service_name="secretsmanager", region_name=region_name)
+    client = session.client(
+        service_name="secretsmanager",
+        region_name=region_name)
     try:
-        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+        get_secret_value_response = client.get_secret_value(
+            SecretId=secret_name)
     except ClientError as e:
         raise e
 

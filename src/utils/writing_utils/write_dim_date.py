@@ -11,18 +11,18 @@ pg8000 = _utils.import_optional_dependency("pg8000")
 
 
 def write_dim_date(con, starting_date="2021-01-01", updated=dt.now()):
-    dim_date_columns = [
-        "date_id",
-        "year",
-        "month",
-        "day",
-        "day_of_week",
-        "day_name",
-        "month_name",
-        "quarter",
-        "last_updated_date",
-        "last_updated_time",
-    ]
+    # dim_date_columns = [
+    #     "date_id",
+    #     "year",
+    #     "month",
+    #     "day",
+    #     "day_of_week",
+    #     "day_name",
+    #     "month_name",
+    #     "quarter",
+    #     "last_updated_date",
+    #     "last_updated_time",
+    # ]
     starting_date = dt.strptime(starting_date, "%Y-%m-%d").date()
 
     for ii in range(1460):
