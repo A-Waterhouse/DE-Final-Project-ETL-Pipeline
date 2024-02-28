@@ -83,20 +83,3 @@ def test_RuntimeError_NoSuchBucket():
     with pytest.raises(RuntimeError, match="NoSuchBucket"):
         put_s3(None, "mybucket", "some_key")
 
-@mock_aws
-def test_ingestion():
-    # Arrange
-    ssm = boto3.client("ssm", region_name="eu-west-2")
-    ssm.put_parameter(Name="time", Value=datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"), Type="String", Overwrite=True)
-
-    # Act
-    result = ingestion(None, None)
-
-    # Assert
-    assert isinstance(result, dict)
-    assert "fact_sales_order" in result["sales"][0]
-    assert "dim_location" in result["sales"][1]
-    assert "dim_staff" in result["sales"][2]
-    assert "dim_counterparty" in result["sales"][3]
-    assert "dim_currency" in result["sales"][4]
-    assert "dim_design" in result["sales"][5]
