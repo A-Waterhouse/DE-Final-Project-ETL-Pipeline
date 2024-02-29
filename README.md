@@ -103,6 +103,7 @@ AWS_SECRET
 - read_processed_bucket_name() in parquet_to_json.py under bucket_name variable
 - read_processed_bucket_name() in json_to_parquet.py under bucket_name variable
 - provider.tf line 14 in the bucket variable
+- input a valid email address into line 8 of the terraform alarms.tf file
 
 
 
